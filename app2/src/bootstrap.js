@@ -1,5 +1,5 @@
-import Greeting from "./Greeting";
+import Dashboard from "./Dashboard";
 import React from "react";
 import ReactDOM from "react-dom";
 
-ReactDOM.render(<Greeting>Hello from Reason</Greeting>, document.getElementById("root"));
+ReactDOM.render(<Dashboard />, document.getElementById("root"));
