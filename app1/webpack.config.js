@@ -9,7 +9,7 @@ module.exports = {
   target: "web",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3000,
+    port: 3001,
   },
   output: {
     publicPath: "auto",
@@ -30,7 +30,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "app1",
       remotes: {
-        "MyReactApp": "MyReactApp"
+        "dogpix": "dogpix"
       },
       shared: {
         react: {

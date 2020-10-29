@@ -1,13 +1,13 @@
 import React, {Suspense} from "react";
 
-const App2 = React.lazy(() => import("app2/App2"));
+const DogPics = React.lazy(() => import("dogpix/DogPictures"));
 
 function App() {
   return <div>
     Hello from App1
     <header>hi</header>
     <Suspense fallback={<div>loading</div>}>
-      <App2 />
+      <DogPics />
     </Suspense>
     <footer>footer</footer>
   </div>;
