@@ -30,7 +30,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "app1",
       remotes: {
-        "MyReactApp": "MyReactApp"
+        dashboard: "dashboard@http://localhost:3001/remoteEntry.js",
       },
       shared: {
         react: {

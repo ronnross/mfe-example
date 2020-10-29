@@ -9,11 +9,11 @@ module.exports = {
   target: "web",
   resolve: {
     // Add .re and .ml to the list of extensions webpack recognizes
-    extensions: ['.re', '.ml', '.js']
+    extensions: [".re", ".ml", ".js"],
   },
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3000,
+    port: 3001,
   },
   output: {
     publicPath: "auto",
@@ -28,17 +28,16 @@ module.exports = {
           presets: ["@babel/preset-react"],
         },
       },
-      { test: /\.(re|ml)$/, use: 'bs-loader' },
+      { test: /\.(re|ml)$/, use: "bs-loader" },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "app2",
-      library: { type: "var", name: "app2" },
+      name: "dashboard",
+      library: { type: "var", name: "dashboard" },
       filename: "remoteEntry.js",
       exposes: {
-        "./App2": "./src/App.js",
-        "./stuff": "./src/stuff.js"
+        "./Dashboard": "./src/Dashboard.js",
       },
       shared: {
         react: {
