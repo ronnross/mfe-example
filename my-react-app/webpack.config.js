@@ -16,7 +16,7 @@ module.exports = {
   mode: "development",
   devServer: {
     contentBase: path.join(__dirname, output),
-    port: 3000,
+    port: 3002,
   },
   target: "web",
   output: {
@@ -42,7 +42,7 @@ module.exports = {
       library: { type: "var", name: "dogpix" },
       filename: "remoteEntry.js",
       exposes: {
-        "./DogPictures": entry,
+        "./FetchedDogPictures": "./lib/js/src/FetchedDogPictures/FetchedDogPictures.bs.js",
       },
       shared: {
         react: {

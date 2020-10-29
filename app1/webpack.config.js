@@ -9,7 +9,7 @@ module.exports = {
   target: "web",
   devServer: {
     contentBase: path.join(__dirname, "dist"),
-    port: 3001,
+    port: 3000,
   },
   output: {
     publicPath: "auto",
@@ -31,6 +31,7 @@ module.exports = {
       name: "app1",
       remotes: {
         dashboard: "dashboard@http://localhost:3001/remoteEntry.js",
+        dogpix: "dogpix@http://localhost:3002/remoteEntry.js",
       },
       shared: {
         react: {
