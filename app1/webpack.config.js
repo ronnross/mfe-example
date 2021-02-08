@@ -6,10 +6,14 @@ const path = require("path");
 module.exports = {
   entry: "./src/index",
   mode: "development",
-  target: "web",
+  target: ["web", "es5"],
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
     port: 3000,
+    static: {
+      staticOptions: {
+        contentBase: path.join(__dirname, "dist"),
+      },
+    },
   },
   output: {
     publicPath: "auto",
@@ -30,7 +34,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "app1",
       remotes: {
-        dashboard: "dashboard@http://localhost:3001/remoteEntry.js",
+        dashboard: "dashboard",
       },
       shared: {
         react: {

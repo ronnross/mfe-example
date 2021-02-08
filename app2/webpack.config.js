@@ -6,14 +6,14 @@ const path = require("path");
 module.exports = {
   entry: "./src/index",
   mode: "development",
-  target: "web",
-  resolve: {
-    // Add .re and .ml to the list of extensions webpack recognizes
-    extensions: [".re", ".ml", ".js"],
-  },
+  target: ["web", "es5"],
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
     port: 3001,
+    static: {
+      staticOptions: {
+        contentBase: path.join(__dirname, "dist"),
+      },
+    },
   },
   output: {
     publicPath: "auto",
@@ -28,13 +28,11 @@ module.exports = {
           presets: ["@babel/preset-react"],
         },
       },
-      { test: /\.(re|ml)$/, use: "bs-loader" },
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
       name: "dashboard",
-      library: { type: "var", name: "dashboard" },
       filename: "remoteEntry.js",
       exposes: {
         "./Dashboard": "./src/Dashboard.js",

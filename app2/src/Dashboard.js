@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
+import React from "react";
 
 function Dashboard() {
-  return <div>Welcome to the dashboard project!!!!!</div>;
+  return <div>Hello from dashboard</div>;
 }
 
 export default Dashboard;
