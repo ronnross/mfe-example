@@ -18,8 +18,26 @@ module.exports = {
   output: {
     publicPath: "auto",
   },
+  devtool: "source-map",
   module: {
     rules: [
+      {
+        test: /\.(s[ac]|c)ss/i,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              import: false,
+              modules: {
+                compileType: "module",
+                localIdentName: "[path][name]__[local]--[hash:base64:5]"
+              },
+            },
+          },
+          "sass-loader",
+        ],
+      },
       {
         test: /\.jsx?$/,
         loader: "babel-loader",
@@ -34,7 +52,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "app1",
       remotes: {
-        dashboard: "dashboard",
+        dashboard: "dashboard@http://localhost:3001/remoteEntry.js",
       },
       shared: {
         react: {
