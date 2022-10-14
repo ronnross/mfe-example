@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
+const ModuleFederationPlugin =
+  require("webpack").container.ModuleFederationPlugin;
 const path = require("path");
 
 module.exports = {
@@ -44,9 +44,13 @@ module.exports = {
           shareKey: "react",
           shareScope: "default",
           singleton: true,
+          strictVersion: true,
+          requiredVersion: ">=18.0.0 <19.0.0",
         },
         "react-dom": {
           singleton: true,
+          strictVersion: true,
+          requiredVersion: ">=18.0.0 <19.0.0",
         },
       },
     }),

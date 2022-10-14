@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack").container
-  .ModuleFederationPlugin;
+const ModuleFederationPlugin =
+  require("webpack").container.ModuleFederationPlugin;
 const path = require("path");
 
 module.exports = {
@@ -23,21 +23,23 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(s[ac]|c)ss/i,
+        test: /\.css$/,
         use: [
           "style-loader",
           {
             loader: "css-loader",
             options: {
-              import: false,
-              modules: {
-                compileType: "module",
-                localIdentName: "[path][name]__[local]--[hash:base64:5]",
-              },
+              importLoaders: 1,
+              modules: true,
             },
           },
-          "sass-loader",
         ],
+        include: /\.module\.css$/,
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+        exclude: /\.module\.css$/,
       },
       {
         test: /\.jsx?$/,
@@ -61,9 +63,13 @@ module.exports = {
           shareKey: "react",
           shareScope: "default",
           singleton: true,
+          strictVersion: true,
+          requiredVersion: ">=18.0.0 <19.0.0",
         },
         "react-dom": {
           singleton: true,
+          strictVersion: true,
+          requiredVersion: ">=18.0.0 <19.0.0",
         },
       },
     }),
